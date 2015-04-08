@@ -1,7 +1,7 @@
 # 欢迎阅读Nginx<br />分享
 ----
 
-```java
+```shell
 	<select id="xxx">
 	SELECT 1 FROM DUAL
 	   WHERE 1 = 1
