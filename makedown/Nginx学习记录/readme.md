@@ -1,7 +1,7 @@
 # 欢迎阅读Nginx<br />分享
 ----
 
-```shell
+```mac
 	<select id="xxx">
 	SELECT 1 FROM DUAL
 	   WHERE 1 = 1
@@ -63,7 +63,7 @@
 
 - 现在我们用命令进入nginx解压后的文件夹里的 `objs` 目录下，
  使用vi命令修改修改该目录下的 **Makefile** 文件（）：`vi Makefile`, 然后按字母 `i` 进入该文件的编辑模式，按上下左右移动光标去需要改动的代码位置，删除文件文本内容 `-Werror`，删除修改后按 **esc** 键返回vi编辑器的命令模式，敲击 `:wq!` 命令保存修改并退出。（[vi编辑器详解猛戳这里](http://baike.baidu.com/view/908054.htm?fr=aladdin)）
- ```shell
+ ```mac
  cd /Applications/DEV/myNginx/source/nginx-1.6.2/objs
  vi Makefile 
  ```
