@@ -1,17 +1,17 @@
 # 欢迎阅读Nginx<br />分享
 ----
 
-```
-<select id="xxx">
-42	   SELECT 1 FROM DUAL
-43	   WHERE 1 = 1
-44	   <isEmpty property="name">
-45	     AND name = #name#
-46	   </isEmpty>
-47	   <isNotEmpty property="name">
-48	     AND id = #id#
-49	   </isNotEmpty>
-50	</select>
+```sql
+	<select id="xxx">
+	SELECT 1 FROM DUAL
+	   WHERE 1 = 1
+	   <isEmpty property="name">
+	     AND name = #name#
+	   </isEmpty>
+   <isNotEmpty property="name">
+     AND id = #id#
+   </isNotEmpty>
+   </select>
 ```
 
 ## Nginx简介
