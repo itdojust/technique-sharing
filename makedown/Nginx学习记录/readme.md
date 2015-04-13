@@ -5,7 +5,7 @@
 
 #### Nginx是什么？
 
-> Nginx是`engine	['endʒɪn] X`的简写，是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。由俄罗斯的程序设计师Igor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler（俄文：Рамблер）使用。其特点是占有内存少，并发能力强，是目前市面上唯一能和kangleweb server比拼的web server，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：新浪、网易、腾讯等。[详情猛戳这里](http://baike.baidu.com/view/926025.htm?fr=aladdin)
+> Nginx是`engine ['endʒɪn] X`的简写，是一款轻量级的Web 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器，并在一个BSD-like 协议下发行。由俄罗斯的程序设计师Igor Sysoev所开发，供俄国大型的入口网站及搜索引擎Rambler（俄文：Рамблер）使用。其特点是占有内存少，并发能力强，是目前市面上唯一能和kangleweb server比拼的web server，事实上nginx的并发能力确实在同类型的网页服务器中表现较好，中国大陆使用nginx网站用户有：新浪、网易、腾讯等。[详情猛戳这里](http://baike.baidu.com/view/926025.htm?fr=aladdin)
 
 ###### 总结：
 - 定义： 轻量级、高性能、开源的web服务器 
@@ -118,7 +118,7 @@ cd /Applications/DEV/myNginx/install/sbin
 >  nginx.conf文件内容：
  <pre>worker_processes  1; 
 events {
-	 worker_connections  1024;
+   worker_connections  1024;
 }
 http {
     include       mime.types;
@@ -142,72 +142,96 @@ http {
 
 - 用HTTP模块块配置一个静态Web服务器，包括了http块，server块、location等。
  >server：一个server就是一个虚拟主机，他只处理与之相对应的主机域名请求。
-location：他会尝试根据用户请求中的URI（统一资源标识符（Uniform Resource Identifier，或URI)是一个用于标识某一互联网资源名称的字符串	）匹配location值的/uri表达式，如果可以匹配，就选择location{	}块中的配置来处理用户请求。<br />
+location：他会尝试根据用户请求中的URI（统一资源标识符（Uniform Resource Identifier，或URI)是一个用于标识某一互联网资源名称的字符串  ）匹配location值的/uri表达式，如果可以匹配，就选择location{  }块中的配置来处理用户请求。<br />
 server里面可以配置多个location，用于匹配地址，location根据用户请求地址中的URI来匹配的，匹配到了，用location{}块中的配置来处理用户请求。
 location是顺序匹配的，一个请求命中多个location，请求只会被第一个匹配上的location处理。
 如果地址栏的匹配在显示location配置中都没有则会默认在html下面找，找到返回，找不到最终报错。比如 http://localhost:9999/index.html，最终在html下面是有的，如果之前的location匹配到了，则用匹配到的location返回结果。
 
-1. 通过nginx访问静态资源
+ 1.通过nginx访问静态资源
 > 只需要修改location的配置就可以通过nginx访问静态资源，location的值用于匹配用户的请求，那么nginx响应什么就需要下面介绍的文件路径定义的配置项了。
->
-><pre>
->（1） root方式设置资源路径
-第一种：
+>>（1） root方式设置资源路径<br />
+**第一种：**<pre>
 location / {
             root   mypage;
             index  default.html default.htm;
-}
+}</pre>
 **这种情况nginx实际找资源的路径：nginx安装根目录/mynginx/goods/**
-一般如果配置了多个location，location / {	}放在最后，表示当其他的location都失败后，由它来处理。 / 可以匹配到所有nginx请求，根据请求地址的uri部分到root值下面找，找到就返回，找不到报错，如果地址栏没有uri部分，最终匹配到/就结束了，则在root中指定目录找index中指定的页面响应，如果有页面招不到报错信息可以去logs下面的文件中看。mypage目录都是在nginx安装根目录下面。
+一般如果配置了多个location，location / {  }放在最后，表示当其他的location都失败后，由它来处理。 / 可以匹配到所有nginx请求，根据请求地址的uri部分到root值下面找，找到就返回，找不到报错，如果地址栏没有uri部分，最终匹配到/就结束了，则在root中指定目录找index中指定的页面响应，如果有页面招不到报错信息可以去logs下面的文件中看。mypage目录都是在nginx安装根目录下面。
 http://localhost:8181/ (访问index默认页)
-http://localhost:8181/facebook.html （访问制定的facebook.html页面）
-第二种：
+http://localhost:8181/facebook.html （访问制定的facebook.html页面）<br />
+**第二种：**<pre>
 location /goods/ {
-			root /mypage/;
-			index default.html;
-}
+      root /mypage/;
+      index default.html;
+}</pre>
 **这种情况nginx实际找资源的路径：/mynginx/goods/**
 地址 http://localhost:8181/goods/goods-index.html
 这种方式实际测试访问资源地址： /mynginx/goods/goods-index.html
-location一旦加上地址，nginx实际查找文件的资源路径不再是相对于nginx的绝对路径：nginx安装目录/mynginx/goods/goods-index.html，而是以root配置的路径来做绝对路径访问，所以location /goods/的这种情况下，root后面不能再跟相对路径了。
-第三种：
+location一旦加上地址，nginx实际查找文件的资源路径不再是相对于nginx的绝对路径：nginx安装目录/mynginx/goods/goods-index.html，而是以root配置的路径来做绝对路径访问，所以location /goods/的这种情况下，root后面不能再跟相对路径了。<br />
+**第三种：**<pre>
 location /goods/ {
-	   root /Applications/DEV/myNginx/install/mypage/;
+     root /Applications/DEV/myNginx/install/mypage/;
        index default.html;
-}
+}</pre>
 **这种情况nginx实际找资源的路径是/Applications/DEV/myNginx/install/mypage/goods/**
 http://localhost:8181/goods/  匹配到location，但是没有访问文件，所以用默认页面default.html返回。
 http://localhost:8181/goods/goods-index.html 匹配到真实页面返回
-http://localhost:8181/goods/buy.html匹配到location，但是没有buy.html ，报错
-</pre>
-><pre>
->（2）以alias方式设置资源路径
->第一种：
->location /findLeader {
-			alias /Applications/DEV/myNginx/install;
-			index notG.html;
-}
+http://localhost:8181/goods/buy.html匹配到location，但是没有buy.html ，报错。<br /><br /><br />
+>>（2）以alias方式设置资源路径<br />
+>**第一种：**<pre>
+location /findLeader {
+  alias /Applications/DEV/myNginx/install;
+  index notG.html;
+}</pre>
 **这种情况nginx实际找资源的路径是/Applications/DEV/myNginx/install/uri部分**
 地址栏输入：
 http://localhost:8181/findLeader/wandouLeader/taG.html
 则会把findLeader后面的部分陪拼接到alias值后面去查找资源文件。
 地址栏输入：
 http://localhost:8181/findLeader/wandouLeader/
-因为没有指定要什么资源，所以用index配置的默认页面notG.html返回给用户，如果index的notG.html不存在，则报错。
-第二种：
+因为没有指定要什么资源，所以用index配置的默认页面notG.html返回给用户，如果index的notG.html不存在，则报错。<br />
+**第二种：**<pre>
 location /findLeader {
-			alias /Applications/DEV/myNginx/install;
-			autoindex on; 
-			index notG.html;
-}
+  alias /Applications/DEV/myNginx/install;
+  autoindex on; 
+  index notG.html;
+}</pre>
 **多了一个autoindex on，这种情况nginx实际找资源的路径是/Applications/DEV/myNginx/install/uri部分**
 地址栏输入：http://localhost:8181/findLeader/，会列出alias配置的资源路径下的所有文件夹列表。
 地址栏输入：http://localhost:8181/findLeader/wandouLeader/，会展示index配置的默认页面。
-如果注释掉	index notG.html，浏览器输入下面地址，
+如果注释掉 index notG.html，浏览器输入下面地址，
 http://localhost:8181/findLeader/wandouLeader/
-这样就不会返回默认页面了，但是不会报错，会列出alias地址+wandouLeader下面的目录列表。
-最后，如果地址栏输入的请求地址在nginx中一个location都没有命令，比如：
+这样就不会返回默认页面了，但是不会报错，会列出alias地址+wandouLeader下面：后，如果地址栏输入的请求地址在nginx中一个location都没有命令，比如：
 http://localhost:8181/findMoney/moneyList.html
 则默认去nginx安装根目录下/html/findMoney/moneyList.html查找文件，招不到会报错。
 Nginx中所有的错误信息都可以在Nginx安装目录下的logs下的error.log文件中查找错误日志。
-></pre>
+
+
+
+ 2.nginx反向代理
+>反向代理就是指用代理服务器来接受互联网上的请求，然后将请求转发给内部网络中的上游服务器，并将从上游服务器那里得到的结果返回给互联网上的客户端，此时代理服务器对外的表现就是web服务器 。（反向代理服务器必须能处理大量并发请求）
+>由于Nginx有很强的高并发，高负载能力，因此一般作为前端服务器直接想客户提供静态文件服务，但一些复杂多变的业务不适合放在nginx上，这时需要tomcat等服务器来处理。这种不适合nginx处理的请求就会被nginx转发到上游服务器处理。
+> - **反向代理的基本配置**<pre>(1) proxy_pass
+语法：proxy_pass URL
+配置块：location
+此配置将当前请求反向代理到URL参数指定的服务器上。
+例如：proxy_pass http://localhost:8080/uri/;
+默认下反向代理不会转发请求中的Host头部，如果要转发，需要加上配置
+`proxy_set_header Host $host`<br />
+(2) proxy_method
+配置块：http、server、location
+该配置表示转发时的协议方法名，例如proxy_method POST;
+那么客户端发来的GET请求转发上游服务器时会变成POST。</pre>
+> - **反向代理例子**
+>>**(1)  反向代理地址配置了地址带上了参数**
+ <pre>
+ location /baby-go {
+     proxy_pass  http://go.raiyee.com/?group=wandou;
+}
+ </pre>
+ 
+
+
+ 
+
+ 
