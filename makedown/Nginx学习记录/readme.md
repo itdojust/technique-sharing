@@ -226,9 +226,22 @@ Nginx中所有的错误信息都可以在Nginx安装目录下的logs下的error.
 >>**(1)  反向代理地址配置了地址带上了参数**
  <pre>
  location /baby-go {
-     proxy_pass  http://go.raiyee.com/?group=wandou;
+     proxy_pass  http://static_kid.com:8080/music/queryGoods?goodsName=sony; 
 }
+请求地址：
+http://nginx.com:8181/baby-go/ceshi/bb?goodsId=10012&goodsName=sony&price=2323
+命中nginx代理后ceshi/bb?goodsId=10012中baby-go后面的地址和第一个参数goodsId会被当成nginx的proxy_pass的地址最后一个参数的值追加到原值sony后面
+，除了第一个参数goodsId后面的参数都是可以正常被nginx提交给上游地址。
  </pre>
+ >>**(2)  反向代理地址配置了无参地址**<pre>
+location /baby-go {
+  proxy_pass http://static_kid.com:8080/music/queryGoods;
+}
+请求地址：
+http://nginx.com:8181/baby-go?goodsId=10012&goodsName=sony&price=2323
+如果代理地址没有配置请求参数，则地址栏命中location后面的地址部分都会被
+追加到proxy_pass值后面作为实际请求地址的一部分
+</pre>
  
 
 
