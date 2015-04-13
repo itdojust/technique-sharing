@@ -19,7 +19,7 @@
   *国内* **新浪 网易 搜狐 校内 迅雷 CSDN...**
 
 #### 作者的美貌？
-![Alt text](./Igor-Sysoev.jpg)
+![Alt text](res/Igor-Sysoev.jpg)
 ###### 大名： Igor Sysoev 伊戈尔 塞索耶夫
 
 ----
@@ -28,15 +28,15 @@
 
 #### 获取Nginx安装包
 - 我们先去官网下载最新的稳定版的Nginx包，然后将其解压放到指定目录，我的机子解压后放在了/Applications/DEV/myNginx/source目录。
-![Alt text](./nginx-down.png)
+![Alt text](res/nginx-down.png)
 图1：Nginx下载界面（[立即下载](http://nginx.org/download/nginx-1.6.2.tar.gz)）
 
 - 在这个目录下将其解压
-![Alt text](./tar-nginx.png)
+![Alt text](res/tar-nginx.png)
 图2：解压Nginx
 
 - 解压后的Nginx的目录结构如下
-![Alt text](./nginx-dir.png)
+![Alt text](res/nginx-dir.png)
 图3：Nginx目录结构
 
 #### Nginx安装步骤
@@ -54,7 +54,7 @@
  cd /Applications/DEV/myNginx/source/nginx-1.6.2/objs
  vi Makefile 
  ```
-![Alt text](./werror.png)
+![Alt text](res/werror.png)
 图5：要去除的-Werror文本
 
 - 修改了Makefile进入nginx解压后的根目录，在这个路径下执行 `make` 命令，等make命令执行后相关信息输出完毕再执行命令：` make install` 命令，这样我们的Nginx就安装成功了。
@@ -63,13 +63,13 @@ cd /Applications/DEV/myNginx/source/nginx-1.6.2/
 make
 make install
 ```
-![Alt text](./make.png)
+![Alt text](res/make.png)
 图6：进入nginx解压根目录执行make命令
-![Alt text](./make-install.png)
+![Alt text](res/make-install.png)
 图7：执行make install命令安装nginx
 
 - 安装nginx成功之后会在图4中prefix值所示的目录中生成安装后的文件
-![Alt text](./install-success.png)
+![Alt text](res/install-success.png)
 图8：nginx安装后生成的文件
 
 ##### 至此，nginx就已经安装完成了... 如果你按照上面的步骤成功安装nginx，那么，恭喜发财，如果你还在痛苦着，那么你也不会快乐着，继续装吧！
@@ -80,9 +80,9 @@ make install
  
  ```
 cd /Applications/DEV/myNginx/install/sbin
-./nginx
+res/nginx
  ```
-![Alt text](./start-error.png)
+![Alt text](res/start-error.png)
 图9：启动nginx报错界面
 **注意 ：** 
 > 这里启动报错了是因为nginx的默认端口是80端口，mac下80端口需要更高的用户权限才能使用（1000以下的端口号需要系统权限），如果不改，nginx就不能启动，所以这里可以自己随意改个端口号为8181。
@@ -95,19 +95,19 @@ cd /Applications/DEV/myNginx/install/sbin
   cd /Applications/DEV/myNginx/install/conf 
   vi nginx.conf
    ```
-![Alt text](./port.png)
+![Alt text](res/port.png)
 图10：nginx默认80端口
- ![Alt text](./8181.png)
+ ![Alt text](res/8181.png)
 图11：nginx端口改成8181
 >接下来再次进入nginx安装目录的sbin目录下，执行下面的命令重新加载一下nginx的配置即可以最新的配置重启nginx。
  ```shell
  cd /Applications/DEV/myNginx/install/sbin
-./nginx -s reload
+res/nginx -s reload
  ```
  
 - 访问nginx首页测试nginx是否启动成功
 打开浏览器，输入地址`http://localhost:8181/`,如果成功看见nginx的欢迎页面，则表示安装-配置-启动nginx一套拳全部打完。
- ![Alt text](./end.png)
+ ![Alt text](res/end.png)
 
 ----
 
@@ -243,6 +243,12 @@ http://nginx.com:8181/baby-go?goodsId=10012&goodsName=sony&price=2323
 追加到proxy_pass值后面作为实际请求地址的一部分
 </pre>
  
+----
+###本例子中的nging.conf配置文件和nginx安装包都放在网上了，请谨慎使用。[猛戳去网上下载](https://github.com/statickid/technique-sharing/tree/master/makedown/Nginx%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/file)
+
+###友情提供nginx参考文献：[猛戳去参阅资料](http://item.jd.com/1458596454.html)
+
+
 
 
  
