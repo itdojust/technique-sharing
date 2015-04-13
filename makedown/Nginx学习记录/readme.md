@@ -248,6 +248,15 @@ http://nginx.com:8181/baby-go?goodsId=10012&goodsName=sony&price=2323
 
 ###友情提供nginx参考文献：[猛戳去参阅资料](http://item.jd.com/1458596454.html)
 
+###nginx常用命令
+- 关闭nginx ：./nginx -s stop
+
+- 查找nginx安装目录：  find /|grep nginx.conf
+
+- 运行nginx -V  可以查看当前nginx的版本号和安装目录和安装的插件
+
+- 修改nginx配置后：./nginx -s reload就可以重新加载配置文件
+
 
 
 
