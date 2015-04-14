@@ -45,7 +45,7 @@
 
 - 执行命令：`./configure prefix = 你的nginx准备安装的目录`
 这个命令会配置nginx的安装路径，./configure表示在当前这个路径下找configure这个命令来执行，我的nginx准备安装在/Applications/DEV/myNginx/install下面，所以我的命令是：` ./configure prefix=/Applications/DEV/myNginx/install`
-![Alt text](./config-nginx.png)
+![Alt text](res/config-nginx.png)
 图4：配置nginx安装路径
 
 - 现在我们用命令进入nginx解压后的文件夹里的 `objs` 目录下，
@@ -235,7 +235,7 @@ http://nginx.com:8181/baby-go/ceshi/bb?goodsId=10012&goodsName=sony&price=2323
  </pre>
  >>**(2)  反向代理地址配置了无参地址**<pre>
 location /baby-go {
-  proxy_pass http://static_kid.com:8080/music/queryGoods;
+	proxy_pass http://static_kid.com:8080/music/queryGoods;
 }
 请求地址：
 http://nginx.com:8181/baby-go?goodsId=10012&goodsName=sony&price=2323
@@ -256,7 +256,6 @@ http://nginx.com:8181/baby-go?goodsId=10012&goodsName=sony&price=2323
 - 运行nginx -V  可以查看当前nginx的版本号和安装目录和安装的插件
 
 - 修改nginx配置后：./nginx -s reload就可以重新加载配置文件
-
 
 
 
