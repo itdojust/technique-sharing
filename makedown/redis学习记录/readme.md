@@ -47,8 +47,8 @@
 redis-cli程序是redis自带的基于命令行的redis客户端，也是我们学习和测试redis的工具，后面使用他来讲解redis的命令用法。
 
 - 发送redis命令
-通过redis-cli向redis发送命令有两种方式：
-1、将命令作为redis-cli的参数执行，比如redis-cli SHUTDOWN。
+通过redis-cli向redis发送命令有两种方式：<br />
+1、将命令作为redis-cli的参数执行，比如redis-cli SHUTDOWN。<br />
 2、直接运行redis-cli，这样会进入交互模式，可以自由的输入命令。
 ![Alt text](res/redis-cli.png)
 注意：
@@ -58,24 +58,24 @@ redis-cli的前提是运行redis-server启动了reids。
 --raw            Use raw formatting for replies (default when STDOUT is not a tty) 
 
 - 命令的返回值
-大多数情况下执行命令我们都会关心命令的返回值，命令返回值有5种类型，对于每种类型redis-cli的展现结果都不同。
+大多数情况下执行命令我们都会关心命令的返回值，命令返回值有5种类型，对于每种类型redis-cli的展现结果都不同。<br />
 1、 状态回复
 状态回复（status reply）是最简单的一种回复，比如发送set命令设置某个键的值时，redis会回复状态OK表示设置成功,另外对PING命令的回复PONG也是状态回复，状态回复直接显示状态信息。
-![Alt text](res/state-reply.png)
-2、 错误回复
+![Alt text](res/state-reply.png)<br />
+2、 错误回复<br />
 出现命令不存在或错误等情况，redis会返回错误回复error reply，错误回复以error开头，并在后面跟上错误信息。
-如果执行一个不存在的命令：
- ![Alt text](res/error-reply.png)
+如果执行一个不存在的命令：<br />
+ ![Alt text](res/error-reply.png)<br />
 3、整数回复
-redis没有整数类型，却提供了一些用于整数操作的命令，如递增键值的INCR命令会以整数形式返回递增后的键值，	除此外，一些其他命令也会返回整数，如可以获取当前数据库中键的数量的DBSIZE命令等，整数回复以(integer)开头，
-并在后面跟上整数数据。
-![Alt text](res/integer-reply.png)
-4、字符串回复
-这是最常见的回复类型，当请求一个字符串类型键的键值或一个其他的类型键中的某个元素时就会得到一个字符串回复，字符串回复以双引号包裹。
-![Alt text](res/string-reply.png)
-5、 多行字符串回复
-多行字符串回复multi-bulk replay很常见，如当请求一个非字符串类型键的元素列表时就会收到多行字符串回复。多行字符串回复中的每行字符串都以一个序号开头。
-![Alt text](res/strings-reply.png)
+redis没有整数类型，却提供了一些用于整数操作的命令，如递增键值的INCR命令会以整数形式返回递增后的键值，除此外，一些其他命令也会返回整数，如可以获取当前数据库中键的数量的DBSIZE命令等，整数回复以(integer)开头，
+并在后面跟上整数数据。<br />
+![Alt text](res/integer-reply.png)<br />
+4、字符串回复<br />
+这是最常见的回复类型，当请求一个字符串类型键的键值或一个其他的类型键中的某个元素时就会得到一个字符串回复，字符串回复以双引号包裹。<br />
+![Alt text](res/string-reply.png)<br />
+5、 多行字符串回复<br />
+多行字符串回复multi-bulk replay很常见，如当请求一个非字符串类型键的元素列表时就会收到多行字符串回复。多行字符串回复中的每行字符串都以一个序号开头。<br />
+![Alt text](res/strings-reply.png)<br />
 
 ----
 
@@ -242,19 +242,19 @@ sren 从集合中删除一个或多个元素，并返回删除成功的个数。
 `sismember key member`
 这个操作是一个时间复杂度为O（1）的操作，无论集合中有多少元素, SISMEMBER 命令始终可以极快的返回结果，存在返回1，否则0。
 ![Alt text](res/sismember.png)
-4. **集合运算**
+4. **集合运算**<br />
 (1) 差集运算
 `sdiff key [key ...]`
 sdiff命令用来对多个集合执行差集运算，集合A与集合B的差集表示为A-B，代表所有属于A不属于B的元素构成的集合。比如 {1,2,3} - {2,3,4} = {1}
-![Alt text](res/sdiff.png)
+![Alt text](res/sdiff.png)<br />
 (2) 差集运算
 `sinter key [key ...]`
 SINTER用来对多个集合进行交集运算。
-![Alt text](res/sinter.png)
+![Alt text](res/sinter.png)<br />
 (3) 差集运算
 `sunion key [key ...]`
 sunion命令用来对多个集合执行并运算,该运算代表所有属于A或者属于B的元素构成的集合。{1，2，3} ∪ {2，3，4} = {1, 2，3, 4} 
-![Alt text](res/sunion.png)
+![Alt text](res/sunion.png)<br />
 5. **获得集合中元素个数**
 `scard key`
 ![Alt text](res/scard.png)
