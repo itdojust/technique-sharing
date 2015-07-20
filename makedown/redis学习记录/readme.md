@@ -108,26 +108,26 @@ pattern支持glob风格通配符格式
 
 ######------操作字符串类型的命令------
 1. **赋值与取值**<br />
-`set key value 和 get key`
-![Alt text](res/get-set.png)
+`set key value 和 get key`<br />
+![Alt text](res/get-set.png)<br />
 2. **递增数字**<br />
 `INCR key`<br />
-前面说过字符串类型可以存储任何形式的字符串，当存储的字符串是整数形式时，redis提供`incr`命令，作用是让当前值递增，并返回递增后的值。
+前面说过字符串类型可以存储任何形式的字符串，当存储的字符串是整数形式时，redis提供`incr`命令，作用是让当前值递增，并返回递增后的值。<br />
 ![Alt text](res/incr.png)<br />
 当键不存在的时候执行incr 键，则默认从0开始，所以第一次执行incr 不存储在键，结果是1，也就是初始值是1，如果键存在，但是键的初始值是纯字符串，则会报错。
 ![Alt text](res/incr-detail.png)
 3. **增加指定的整数**<br />
 `incrby key increment`<br />
-和incr命令一样是递增，不过他不是一次递增1，而是increment代表的数值地增量，比如incrby num 4，就是一次加4。
+和incr命令一样是递增，不过他不是一次递增1，而是increment代表的数值地增量，比如incrby num 4，就是一次加4。<br />
 ![Alt text](res/incrby.png)
 4. **增加指定浮点数**<br />
 `incrbyfloat key increment`<br />
-`incrby`增加浮点数会报错，而incrbyfloat能增加浮点数。
-![Alt text](res/by-float.png)
+`incrby`增加浮点数会报错，而incrbyfloat能增加浮点数。<br />
+![Alt text](res/by-float.png)<br />
 5. **向尾部追加值**<br />
 `append key value`<br />
-`incrby`增加浮点数会报错，而incrbyfloat能增加浮点数。
-![Alt text](res/append.png)
+`incrby`增加浮点数会报错，而incrbyfloat能增加浮点数。<br />
+![Alt text](res/append.png)<br />
 6. **同时获得/设置多个键值**<br />
 `mget key1 [key2 ...]`<br />
 `mset key1 value1 [key2 value2 ...]`<br />
