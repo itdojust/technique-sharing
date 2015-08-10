@@ -66,4 +66,4 @@ $.publish是发布函数，参数topic 表示发布的事件名称，params是�
 同时，一个事件可以被多个订阅者所订阅，发布后根据订阅顺序依次响应。
 
 ## 事件订阅发布代码例子下载
-[jquery-pubsub-demo](http://a.b.c:10086/jquery-pub-sub/pubsub-layout.html)
+[jquery-pubsub-demo](https://github.com/statickid/technique-sharing/tree/master/makedown/jquery-pubsub学习记录/code-file)
