@@ -21,9 +21,9 @@ jquery的pubsub插件是一个基于事件订阅发布的插件，其主要用�
 <title>Welcome to nginx!</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <!-- jquery必须要引入 -->
-<script src="../ommon/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script src="jquery-1.11.1.min.js" type="text/javascript"></script>
 <!-- 引入pubsub类库 -->
-<script src="../ommon/js/jquery.pubsub.js" type="text/javascript"></script>
+<script src="jquery.pubsub.js" type="text/javascript"></script>
 
 
 <script type="text/javascript">
@@ -65,5 +65,5 @@ $.publish是发布函数，参数topic 表示发布的事件名称，params是�
 所传参数即可，不必关心对方的方法实现。
 同时，一个事件可以被多个订阅者所订阅，发布后根据订阅顺序依次响应。
 
-## demo
+## 事件订阅发布代码例子下载
 [jquery-pubsub-demo](http://a.b.c:10086/jquery-pub-sub/pubsub-layout.html)
