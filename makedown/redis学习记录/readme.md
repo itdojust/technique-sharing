@@ -8,7 +8,7 @@
 ----
 
 ## redis下载和安装
-####下载：
+#### 下载：
 >redis官方下载地址：http://redis.io/download 。
  redis约定第一个小数点后的数字为偶数的版本是稳定版，如2.6，奇数是非稳定版如2.7，推荐使用稳定版进行开发和生产环境使用。（[猛戳下载稳定版](http://download.redis.io/releases/redis-3.0.2.tar.gz)）
  
