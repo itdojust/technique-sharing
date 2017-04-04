@@ -15,16 +15,16 @@
 #### 官网安装方式：
  ![Alt text](res/redis-install.png)
 
-####mac平台上可以用`brew install redis`命令来进行自动下载和安装。
-####brew是mac上安装homebrew后才又的命令，原生mac os不自带。
-####mac上安装homebrew的方式：
+#### mac平台上可以用`brew install redis`命令来进行自动下载和安装。
+#### brew是mac上安装homebrew后才又的命令，原生mac os不自带。
+#### mac上安装homebrew的方式：
 `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-####homebrew： 通过它可以在终端里方便的使用它的brew命令安装管理苹果没有自带的UNIX相关工具软件，是程序员神器啊。
+#### homebrew： 通过它可以在终端里方便的使用它的brew命令安装管理苹果没有自带的UNIX相关工具软件，是程序员神器啊。
 
 ----
 
 ## redis使用介绍
-######redis的一些可执行文件
+###### redis的一些可执行文件
 ```
            文件名						  说明
 	 	redis-server				Redis服务器
@@ -343,4 +343,4 @@ zrevrank是分数最大的元素排名为0。也就是一个升序，一个降�
 ####ttl命令注意：如果键不存在了，则返回-2 ，如果键存在，但是没有设置生存时间，返回-1，否则返回剩余时间。
 
 ----
-#好了，暂时就介绍到这里，剩下的如果有时间，会持续更新，谢谢观看。
+# 好了，暂时就介绍到这里，剩下的如果有时间，会持续更新，谢谢观看。
